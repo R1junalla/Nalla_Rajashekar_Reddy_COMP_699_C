@@ -74,6 +74,50 @@ class App(tk.Tk):
         tk.Button(frame, text="Register", command=register_action, width=20).grid(row=3, column=0, pady=10)
         tk.Button(frame, text="Back", command=self.show_login, width=20).grid(row=3, column=1, pady=10)
 
+    # ---------------------- User Profile Management ----------------------
+    def show_profile(self):
+        self.clear_window()
+        frame = tk.Frame(self)
+        frame.pack(pady=20)
+        
+        tk.Label(frame, text="User Profile", font=("Arial", 24)).grid(row=0, column=0, columnspan=2, pady=10)
+        user_data = self.users[self.current_user]
+        tk.Label(frame, text=f"Email: {self.current_user}").grid(row=1, column=0, sticky="w", padx=10)
+        tk.Label(frame, text=f"Preferred Fuel Type: {user_data.get('preferred_fuel', 'Not set')}").grid(row=2, column=0, sticky="w", padx=10)
+        tk.Label(frame, text=f"Vehicle Efficiency: {user_data.get('efficiency', 'Not set')}").grid(row=3, column=0, sticky="w", padx=10)
+        
+        tk.Label(frame, text="Update Preferred Fuel Type:").grid(row=4, column=0, sticky="e", padx=10)
+        pref_entry = tk.Entry(frame, width=40)
+        pref_entry.grid(row=4, column=1, padx=10, pady=5)
+        tk.Label(frame, text="Update Vehicle Efficiency:").grid(row=5, column=0, sticky="e", padx=10)
+        eff_entry = tk.Entry(frame, width=40)
+        eff_entry.grid(row=5, column=1, padx=10, pady=5)
+        
+        def update_profile():
+            self.users[self.current_user]["preferred_fuel"] = pref_entry.get().strip()
+            self.users[self.current_user]["efficiency"] = eff_entry.get().strip()
+            messagebox.showinfo("Profile", "Profile updated successfully!")
+            self.show_profile()
+            
+        tk.Button(frame, text="Update Profile", command=update_profile, width=20).grid(row=6, column=0, pady=10)
+        
+        def reset_password():
+            new_pw = simpledialog.askstring("Reset Password", "Enter new password:", show="*")
+            if new_pw:
+                self.users[self.current_user]["password"] = new_pw
+                messagebox.showinfo("Password", "Password updated successfully!")
+                
+        tk.Button(frame, text="Reset Password", command=reset_password, width=20).grid(row=6, column=1, pady=10)
+        
+        def delete_account():
+            if messagebox.askyesno("Delete Account", "Are you sure you want to delete your account?"):
+                del self.users[self.current_user]
+                self.current_user = None
+                messagebox.showinfo("Account", "Account deleted successfully.")
+                self.show_login()
+                
+        tk.Button(frame, text="Delete Account", command=delete_account, width=20).grid(row=7, column=0, pady=10)
+        tk.Button(frame, text="Back to Menu", command=self.show_login, width=20).grid(row=7, column=1, pady=10)
 
 if __name__ == "__main__":
     app = App()
