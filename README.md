@@ -19,16 +19,18 @@ o	Otherwise:
 # Create
 python -m venv venv
 
-# macOS/Linux
+macOS/Linux
 source venv/bin/activate
 
-# Windows
+Windows
 venv\Scripts\activate
+
 4.	Install Dependencies
 Only one external package is required:
 pip install requests
 (All other modules—tkinter, json, hashlib, http.client, etc.—are in the Python standard library.)
-6.	File Structure
+
+5.	File Structure
 After first run, your project folder will look like:
 ./  
 ├── app.py              # Main application script  
@@ -38,10 +40,11 @@ After first run, your project folder will look like:
 └── notifications.json  # Auto-created (watchlist data)  
 You do not need to create the JSON files manually.
 
-7.	Running the Application
+6.	Running the Application
 With your virtual environment active: python app.py
 A window titled Car Fuel Cost Calculator will launch.
-8.	Usage Overview
+
+7.	Usage Overview
 a.	Register / Login
 i.	New users: click Register, enter email & password.
 ii.	Returning users: enter credentials and click Login.
@@ -60,7 +63,8 @@ e.	Notifications & Alerts Tab
 i.	Select a state, frequency (min), and % price-change threshold.
 ii.	Add to Watchlist → begins monitoring that state’s fuel price.
 iii.	Remove entries or view your current watchlist.
-9.	Troubleshooting
+
+8.	Troubleshooting
 a.	“Invalid credentials” → Double-check email/password or use “Forgot Password.”
 b.	API errors → Verify network connectivity and that your API keys are valid and enabled.
 c.	Missing modules → Run pip install requests and retry.
