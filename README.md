@@ -16,7 +16,7 @@ o	Otherwise:
 	Create a new folder anywhere on your machine.
 	Save the provided script as app.py inside that folder.
 3.	Create & Activate a Virtual Environment (Recommended)
-# Create
+Create
 python -m venv venv
 
 macOS/Linux
