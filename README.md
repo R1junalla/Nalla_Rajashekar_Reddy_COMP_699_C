@@ -37,6 +37,7 @@ After first run, your project folder will look like:
 ├── trips.json          # Auto-created (saved trip records)  
 └── notifications.json  # Auto-created (watchlist data)  
 You do not need to create the JSON files manually.
+
 7.	Running the Application
 With your virtual environment active: python app.py
 A window titled Car Fuel Cost Calculator will launch.
